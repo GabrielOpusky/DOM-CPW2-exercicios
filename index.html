@@ -1,46 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
+/**
+ * Aplica a cor #BECCC3 no background do body da página
+ */
+ function background(){
+    document.body.style.backgroundColor = '#BECCC3';
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
-    <title>Document Object Model</title>
-</head>
+    /**
+     * Tarefa/Issue  1
+     *
+     * Desenvolva uma função capaz de trocar a cor do fundo da página, ou seja,
+     * alterar o background do body para a cor #BECCC3.
+     */
 
-<body>
+}
 
-   <h1>Document Object Model</h1>
-     <!-- Tarefa/Issue 1: -->
-     <h1>1</h1>
-          <!-- Implemente a função background do arquivo index.js -->
-          <button onclick="background()">Mudar bgcolor: #BECCC3</button>
+/**
+ * Recupera os valores dos campos de texto cujo o id='fname' e id='lname'
+ * e apresente o nome e o sobrenome de uma pessoa (separado por um espaço)
+ * na div id='result'
+ */
+function show(){
 
-     <!-- Issue 2: -->
-     <h2>2</h2>
 
-          <label for="fname">Nome:</label>
-          <input type="text" id="fname" name="fname" /><br/><br/>
+    
+    
+    let name = document.getElementById('fname').value;
+    let lastName = document.getElementById('lname').value;
+    document.getElementById('result').innerHTML =`<p>${name} ${lastName}</p>`;
+    
 
-          <label for="lname">Sobrenome:</label>
-          <input type="text" id="lname" name="lname" /><br/><br/>
 
-          <!-- Implemente a função show do arquivo index.js -->
-          <button onclick="show()">Mostrar</button>
 
-          <!-- Utilize a div abaixo para apresentar os resultados na tela -->
-          <div id="result"></div>
+     /**
+      * Issue  2
+      *
+      * Recupera os valores dos campos de texto cujo o id='fname' e id='lname' e apresente o nome
+      * e o sobrenome de uma pessoa (separado por um espaço) na div id='result'
+      */
+}
 
-     <!-- Issue 3: -->
-     <h1>3</h1>
+function search(){
 
-        <label for="name">Nome:</label>
-        <!-- Implemente a função search do arquivo index.js -->
-        <input type="text" id="name" name="name" onkeyup="search();" /><br/><br/>
+    var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
 
-        <!-- Utilize a div abaixo para apresentar os resultados na tela -->
-        <div id="search"></div>
 
-</body>
-</html>
+    let searchName = document.getElementById('name').value;
+    let searchDiv = document.getElementById('search');
+    let t = '';
+    data.forEach(person => {
+         if(person.name.toLowerCase().substr(0, searchName.length).indexOf(`${searchName.toLowerCase()}`) > -1){
+            t += `<div>${person.name}</div>`;
+        }
+    });
+    searchDiv.innerHTML = t;
+}
+
+
+    /**
+     * Issue 3
+     *
+     * Utilizando o array (data) de objetos JSON acima, desenvolva um código que permita com que os
+     * usuários procurem pelo nome de pessoas. Assim, quando o usuário digitar a letra 'r' no campo
+     * de texto (id='name'), todas as pessoas que iniciarem com essa letra devem ser apresentados.
+     * Consequentemente, quando for digitado 'ro' o sistema deve filtrar e apresentar na div com o
+     * id='search' as pessoas cujo o nome inicia com 'ro'.
+     *
+     * Segue algumas funções que podem auxiliar na resolução da questão:
+     *      substr - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/substr
+     *      length - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/String/length
+     *      toUpperCase - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
+     *
+     * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
+     */
+
+
+
+/**
+ * Remove todos os filhos de um nó
+ *
+ * @param {*} node Um objeto HTML Node
+ */
+function removeAllChildren(node){
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+    }
+}
