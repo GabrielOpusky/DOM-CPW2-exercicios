@@ -1,7 +1,8 @@
 /**
  * Aplica a cor #BECCC3 no background do body da página
  */
-function background(){
+ function background(){
+    document.body.style.backgroundColor = '#BECCC3';
 
     /**
      * Tarefa/Issue  1
@@ -19,6 +20,16 @@ function background(){
  */
 function show(){
 
+
+    
+    
+    let name = document.getElementById('fname').value;
+    let lastName = document.getElementById('lname').value;
+    document.getElementById('result').innerHTML =`<p>${name} ${lastName}</p>`;
+    
+
+
+
      /**
       * Issue  2
       *
@@ -27,13 +38,22 @@ function show(){
       */
 }
 
-/**
- * Filtra o array de objetos (data) de acordo com os caracteres
- * digitados no campo de texto id='name'
- */
 function search(){
 
     var data = [{name: "Rodrigo"}, {name: "Ricardo"}, {name: "Fabio"}, {name: "Alex"}, {name: "Sílvia"}];
+
+
+    let searchName = document.getElementById('name').value;
+    let searchDiv = document.getElementById('search');
+    let t = '';
+    data.forEach(person => {
+         if(person.name.toLowerCase().substr(0, searchName.length).indexOf(`${searchName.toLowerCase()}`) > -1){
+            t += `<div>${person.name}</div>`;
+        }
+    });
+    searchDiv.innerHTML = t;
+}
+
 
     /**
      * Issue 3
@@ -52,7 +72,7 @@ function search(){
      * Além disso, a função removeAllChildren abaixo também pode ser útil para o desenvolvimento da solução
      */
 
-}
+
 
 /**
  * Remove todos os filhos de um nó
